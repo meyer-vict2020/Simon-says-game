@@ -32,11 +32,12 @@ namespace Example.Scaling
                     // scale the actor up or down 
                     if (_mouseService.IsButtonPressed(MouseButton.Left))
                     {
-                        // scale the actor up a maximum of 300 percent
-                        float percent1 = (square.GetScale() < 3.0) ? 0.025f : 0;
-                        square.Scale(percent1);
                         // scale the actor down to a minimum of 30 percent
-                        float percent2 = (square.GetScale() > 0.3) ? -0.025f : 0;
+                        float percent1 = (square.GetScale() > 0.3) ? -0.25f : 0;
+                        square.Scale(percent1);
+
+                        // scale the actor up a maximum of 300 percent
+                        float percent2 = (square.GetScale() < 3.0) ? 0.25f : 0;
                         square.Scale(percent2);
                     }
                 }
