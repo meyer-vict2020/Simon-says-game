@@ -25,7 +25,7 @@ namespace Example.Scaling
         
         public static List<int> AddToPattern(List<int> existingPattern) {
             Random random = new Random();
-            int newPattern = random.Next(0,4);
+            int newPattern = random.Next();
             existingPattern.Add(newPattern);
             return existingPattern;
         }
@@ -36,15 +36,39 @@ namespace Example.Scaling
             {
                 _generated = AddToPattern(_generated);
                 List<Actor> squares = scene.GetAllActors("actors");
-                int i =0;
                 
+
                 //for each of the numbers in the generated list,
                 //scale the respective squares one after another
-                foreach(Actor square in squares)
+                foreach(int number in _generated)
                 { 
+                    if(number == 0){
                         // scale the actor down to a minimum of 30 percent
-                        float percent1 = (square.GetScale() > 0.3) ? -0.25f : 0;
-                        square.Scale(percent1);
+                        float percent1 = (squares[0].GetScale() > 0.3) ? -0.25f : 0;
+                        squares[0].Scale(percent1);
+                    }
+                    else if(number == 1){
+                        // scale the actor down to a minimum of 30 percent
+                        float percent1 = (squares[1].GetScale() > 0.3) ? -0.25f : 0;
+                        squares[1].Scale(percent1);
+                    }
+                    else if(number == 2){
+                        // scale the actor down to a minimum of 30 percent
+                        float percent1 = (squares[2].GetScale() > 0.3) ? -0.25f : 0;
+                        squares[2].Scale(percent1);
+                    }
+                    else if(number == 3){
+                        // scale the actor down to a minimum of 30 percent
+                        float percent1 = (squares[3].GetScale() > 0.3) ? -0.25f : 0;
+                        squares[3].Scale(percent1);
+
+
+                        // MAKE IT BIGGER HERE
+                    }
+                    else{
+                        
+                    }
+                        
 
                         //wait part of a second so the scaling is visible
 
@@ -55,8 +79,8 @@ namespace Example.Scaling
 
                         //wait for at least a second between each square's scaling
 
-                        i++;
                 }
+                
             }
             catch (Exception exception)
             {
