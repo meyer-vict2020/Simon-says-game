@@ -10,7 +10,7 @@ namespace Byui.Games.Services
 {
     public class RaylibVideoService : IVideoService
     {
-        private Raylib_cs.Color _background = Raylib_cs.Color.BLACK;
+        private Raylib_cs.Color _background = Raylib_cs.Color.WHITE;
         private Dictionary<string, Font> _fonts = new Dictionary<string, Font>();
         private ISettingsService _settings = null;
         private Dictionary<string, Texture2D> _textures = new Dictionary<string, Texture2D>();

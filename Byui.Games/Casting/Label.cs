@@ -13,7 +13,7 @@ namespace Byui.Games.Casting
         public const int Right = 2;
         
         private int _alignment = Left;
-        private Color _fontColor = Color.White();
+        private Color _fontColor = Color.Black();
         private string _fontFile = string.Empty;
         private float _fontSize = 18f;
         private string _text = string.Empty;

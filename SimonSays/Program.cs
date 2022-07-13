@@ -48,6 +48,7 @@ namespace Example.Scaling
             // Instantiate the actions that use the actors.
             ScaleActorAction scaleActorAction = new ScaleActorAction(serviceFactory);
             DrawActorAction drawActorAction = new DrawActorAction(serviceFactory);
+            GamePattern gamePattern = new GamePattern(serviceFactory);
 
             // Instantiate a new scene, add the actors and actions.
             Scene scene = new Scene();
