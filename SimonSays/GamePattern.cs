@@ -14,7 +14,7 @@ namespace Example.Scaling
     {
         private IKeyboardService _keyboardService;
         private IMouseService _mouseService;
-        List<int> generated = new List<int> ();
+        List<int> _generated = new List<int> ();
         
 
         public GamePattern(IServiceFactory serviceFactory)
@@ -23,7 +23,7 @@ namespace Example.Scaling
             _mouseService = serviceFactory.GetMouseService();
         }
         
-        public static List<int> GeneratePattern(List<int> existingPattern) {
+        public static List<int> AddToPattern(List<int> existingPattern) {
             Random random = new Random();
             int newPattern = random.Next(0,4);
             existingPattern.Add(newPattern);
@@ -34,9 +34,12 @@ namespace Example.Scaling
         {
             try
             {
-                generated = GeneratePattern(generated);
+                _generated = AddToPattern(_generated);
                 List<Actor> squares = scene.GetAllActors("actors");
                 int i =0;
+                
+                //for each of the numbers in the generated list,
+                //scale the respective squares one after another
                 foreach(Actor square in squares)
                 { 
                         // scale the actor down to a minimum of 30 percent

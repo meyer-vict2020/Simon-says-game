@@ -14,7 +14,7 @@ namespace Example.Scaling
     {
         private IKeyboardService _keyboardService;
         private IMouseService _mouseService;
-        List<int> player = new List<int> ();
+        List<int> _player = new List<int> ();
 
 
         public ScaleActorAction(IServiceFactory serviceFactory)
@@ -68,7 +68,7 @@ namespace Example.Scaling
                         
                         //if the square is clicked on, we want to add that square 
                         //to the user's pattern list
-                        player.Add(i);
+                        _player.Add(i);
                         
                     }
                     i += 1;
