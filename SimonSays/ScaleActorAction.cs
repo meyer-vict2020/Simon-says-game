@@ -61,7 +61,7 @@ namespace Example.Scaling
                     (Raylib.GetMouseY() <= bottom && Raylib.GetMouseY() >= top))
                     {
                         // scale the actor down to a minimum of 30 percent
-                        float percent1 = (square.GetScale() > 0.8) ? -0.8f : 0;
+                        float percent1 = (square.GetScale() > 0.8) ? 0.8f : 0;
                         square.ScaleTo(percent1);
                         bool buttonWasDown = true;
                         
