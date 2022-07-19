@@ -25,7 +25,7 @@ namespace SimonSays
             // Instantiate the actors that are used in this example.
             string _generated = "Simon says: Click on Blue, Red, Yellow, Green";
             Label instructions = new Label();
-            instructions.Display(_generated);
+            instructions.Display("Simon says: Click on Blue, Red, Yellow, Green");
             instructions.MoveTo(50, 50);
                 
             Label label = new Label();

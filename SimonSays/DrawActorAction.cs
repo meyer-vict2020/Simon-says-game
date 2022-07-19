@@ -23,12 +23,12 @@ namespace SimonSays
             try
             {
                 // get the actors from the cast
-                Label label = scene.GetFirstActor<Label>("labels");
+                List<Label> labels = scene.GetAllActors<Label>("labels");
                 List<Actor> squares = scene.GetAllActors("actors");
                 
                 // draw the actors on the screen
                 _videoService.ClearBuffer();
-                _videoService.Draw(label);
+                _videoService.Draw(labels);
                 _videoService.Draw(squares);
                 _videoService.FlushBuffer();
             }
