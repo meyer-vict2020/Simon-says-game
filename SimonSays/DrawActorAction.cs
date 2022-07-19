@@ -23,7 +23,7 @@ namespace SimonSays
             try
             {
                 // get the actors from the cast
-                List<Label> labels = scene.GetAllActors<Label>("labels");
+                List<Actor> labels = scene.GetAllActors<Actor>("labels");
                 List<Actor> squares = scene.GetAllActors("actors");
                 
                 // draw the actors on the screen

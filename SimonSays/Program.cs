@@ -56,6 +56,7 @@ namespace SimonSays
             ScaleActorAction scaleActorAction = new ScaleActorAction(serviceFactory);
             DrawActorAction drawActorAction = new DrawActorAction(serviceFactory);
             GamePattern gamePattern = new GamePattern(serviceFactory);
+            CheckClicks checkClicks = new CheckClicks();
 
             // Instantiate a new scene, add the actors and actions.
             Scene scene = new Scene();            
@@ -69,6 +70,7 @@ namespace SimonSays
             scene.AddAction(Phase.Input, scaleActorAction);
             scene.AddAction(Phase.Output, drawActorAction);
             scene.AddAction(Phase.Update, gamePattern);
+            scene.AddAction(Phase.Update, checkClicks);
             // Start the game.
             Director director = new Director(serviceFactory);
             director.Direct(scene);

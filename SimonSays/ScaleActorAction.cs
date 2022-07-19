@@ -26,18 +26,6 @@ namespace SimonSays
             _mouseService = serviceFactory.GetMouseService();
         }
 
-        // this is a test function to make the squares pause before upscaling
-        public void safeWait(int milliseconds, Actor square)
-        {
-            DateTime currentTime = DateTime.Now;
-            TimeSpan elapsedTime = currentTime.Subtract(start);
-            if (elapsedTime.Seconds > delay)
-            {
-                float percent2 = (square.GetScale() < 2.0) ? 0.8f : 0;
-                square.ScaleTo(percent2);
-            }
-        }
-
 
         public override void Execute(Scene scene, float deltaTime, IActionCallback callback)
         {
@@ -89,6 +77,12 @@ namespace SimonSays
             {
                 callback.OnError("Couldn't scale actor.", exception);
             }
+        }
+        public List<int> GetPlayerClicks() {
+            return _player;
+        }
+        public int PlayerClicksCount() {
+            return _player.Count();
         }
     }
 }
