@@ -3,9 +3,10 @@ using Raylib_cs;
 using Byui.Games.Casting;
 using Byui.Games.Scripting;
 using Byui.Games.Services;
+using System.Threading;
 
 
-namespace Example.Scaling
+namespace SimonSays
 {
     /// <summary>
     /// Scales the actor up or down depending on key presses.
@@ -23,8 +24,6 @@ namespace Example.Scaling
         {
             _keyboardService = serviceFactory.GetKeyboardService();
             _mouseService = serviceFactory.GetMouseService();
-            this.delay = delay;
-            this.start = start;
         }
 
         // this is a test function to make the squares pause before upscaling
@@ -46,7 +45,6 @@ namespace Example.Scaling
             {
                 // get the actor from the cast
                 List<Actor> squares = scene.GetAllActors("actors");
-                int i = 0;
 
                 foreach (Actor square in squares)
                 {
@@ -56,28 +54,34 @@ namespace Example.Scaling
                     float bottom = square.GetBottom();
 
                     // scale the actor up or down 
-                    if (_mouseService.IsButtonDown(Byui.Games.Services.MouseButton.Left) &&
+                    if (_mouseService.IsButtonPressed(Byui.Games.Services.MouseButton.Left) &&
                     (Raylib.GetMouseX() >= left && Raylib.GetMouseX() <= right) &&
                     (Raylib.GetMouseY() <= bottom && Raylib.GetMouseY() >= top))
                     {
-                        // scale the actor down to a minimum of 30 percent
+                        // scale the actor down to a minimum of 80 percent
                         float percent1 = (square.GetScale() > 0.8) ? 0.8f : 0;
                         square.ScaleTo(percent1);
-                        bool buttonWasDown = true;
-                        
-                        if(buttonWasDown && _mouseService.IsButtonUp(Byui.Games.Services.MouseButton.Left)){
-                            // scale the actor up a maximum of 300 percent
-                            float percent2 = (square.GetScale() < 2.0) ? 0.8f : 0;
-                            square.ScaleTo(percent2);
-                        }
-                        
-                        
-                        //wait part of a second so the scaling is visible
+                    } 
 
+                    else if (_mouseService.IsButtonReleased(Byui.Games.Services.MouseButton.Left)){
+                        // scale the actor back up on mouse up
+                        float percent2 = (square.GetScale() < 2.0) ? 1.0f : 0;
+                        square.ScaleTo(percent2);
+                        
                         //if the square is clicked on, we want to add that square 
                         //to the user's pattern list
-                        _player.Add(i);
-
+                        if (square == squares[0]) {
+                            _player.Add(0);
+                        }
+                        else if (square == squares[1]) {
+                            _player.Add(1);
+                        }
+                        else if (square == squares[2]) {
+                            _player.Add(2);
+                        }
+                        else if (square == squares[3]){
+                            _player.Add(3);
+                        }
                     }
                 }
             }

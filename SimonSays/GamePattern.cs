@@ -3,9 +3,10 @@ using Raylib_cs;
 using Byui.Games.Casting;
 using Byui.Games.Scripting;
 using Byui.Games.Services;
+using System.Threading;
 
 
-namespace Example.Scaling
+namespace SimonSays
 {
     /// <summary>
     /// Scales the actor up or down depending on key presses.
@@ -14,7 +15,7 @@ namespace Example.Scaling
     {
         private IKeyboardService _keyboardService;
         private IMouseService _mouseService;
-        List<int> _generated = new List<int> ();
+        string _generated = "Simon says: Click on Blue, Red, Yellow, Green";
         
 
         public GamePattern(IServiceFactory serviceFactory)
@@ -23,63 +24,72 @@ namespace Example.Scaling
             _mouseService = serviceFactory.GetMouseService();
         }
         
-        public static List<int> AddToPattern(List<int> existingPattern) {
-            Random random = new Random();
-            int newPattern = random.Next();
-            existingPattern.Add(newPattern);
-            return existingPattern;
-        }
+        // public static List<int> AddToPattern(List<int> existingPattern) {
+        //     Random random = new Random();
+        //     int newPattern = random.Next(0,3);
+        //     existingPattern.Add(newPattern);
+        //     return existingPattern;
+        // }
         
         public override void Execute(Scene scene, float deltaTime, IActionCallback callback)
         {
             try
             {
-                _generated = AddToPattern(_generated);
                 List<Actor> squares = scene.GetAllActors("actors");
                 
 
-                //for each of the numbers in the generated list,
-                //scale the respective squares one after another
-                foreach(int number in _generated)
-                { 
-                    if(number == 0){
-                        // scale the actor down to a minimum of 30 percent
-                        float percent1 = (squares[0].GetScale() > 0.3) ? -0.25f : 0;
-                        squares[0].Scale(percent1);
-                    }
-                    else if(number == 1){
-                        // scale the actor down to a minimum of 30 percent
-                        float percent1 = (squares[1].GetScale() > 0.3) ? -0.25f : 0;
-                        squares[1].Scale(percent1);
-                    }
-                    else if(number == 2){
-                        // scale the actor down to a minimum of 30 percent
-                        float percent1 = (squares[2].GetScale() > 0.3) ? -0.25f : 0;
-                        squares[2].Scale(percent1);
-                    }
-                    else if(number == 3){
-                        // scale the actor down to a minimum of 30 percent
-                        float percent1 = (squares[3].GetScale() > 0.3) ? -0.25f : 0;
-                        squares[3].Scale(percent1);
-
-
-                        // MAKE IT BIGGER HERE
-                    }
-                    else{
+                // //for each of the numbers in the generated list,
+                // //scale the respective squares one after another
+                // foreach(int number in _generated)
+                // { 
+                //     if(number == 0){
+                //         // scale the actor down to a minimum of 30 percent
+                //         float percent1 = (squares[0].GetScale() > 0.3) ? 0.8f : 0;
+                //         squares[0].Scale(percent1);
                         
-                    }
+                //         // wait 1 second 
+                //         Task.Delay(1000);
+                //         // get bigger
+                //         float percent2 = (squares[number].GetScale() < 2.0) ? 1.0f : 0;
+                //         squares[number].ScaleTo(percent2);
+                //     }
+                //     else if(number == 1){
+                //         // scale the actor down to a minimum of 30 percent
+                //         float percent1 = (squares[number].GetScale() > 0.3) ? 0.8f : 0;
+                //         squares[number].Scale(percent1);
                         
+                //         // wait 1 second 
+                //         Task.Delay(1000);
+                //         // get bigger
+                //         float percent2 = (squares[number].GetScale() < 2.0) ? 1.0f : 0;
+                //         squares[number].ScaleTo(percent2);
+                //     }
+                //     else if(number == 2){
+                //         // scale the actor down to a minimum of 30 percent
+                //         float percent1 = (squares[2].GetScale() > 0.3) ? 0.8f : 0;
+                //         squares[2].Scale(percent1);
+                        
+                //         // wait 1 second 
+                //         Task.Delay(1000);
+                //         // get bigger
+                //         float percent2 = (squares[number].GetScale() < 2.0) ? 1.0f : 0;
+                //         squares[number].ScaleTo(percent2);
+                //     }
+                //     else if(number == 3){
+                //         // scale the actor down to a minimum of 30 percent
+                //         float percent1 = (squares[3].GetScale() > 0.3) ? 0.8f : 0;
+                //         squares[3].Scale(percent1);
 
-                        //wait part of a second so the scaling is visible
-
-
-                        // scale the actor up a maximum of 300 percent
-                        // float percent2 = (square.GetScale() < 3.0) ? 0.25f : 0;
-                        // square.Scale(percent2);
-
-                        //wait for at least a second between each square's scaling
-
-                }
+                //         /// wait 1 second 
+                //         Task.Delay(1000);
+                //         // get bigger
+                //         float percent2 = (squares[number].GetScale() < 2.0) ? 1.0f : 0;
+                //         squares[number].ScaleTo(percent2);
+                //     }
+                    
+                //     //wait for at least a second between each square's scaling
+                //     Task.Delay(1000);
+                // }
                 
             }
             catch (Exception exception)

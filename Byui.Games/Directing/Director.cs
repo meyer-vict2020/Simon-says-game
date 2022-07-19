@@ -47,8 +47,11 @@ namespace Byui.Games.Directing
             _videoService.Initialize();
             while (_videoService.IsWindowOpen())
             {
+                // do game pattern and get user inout
                 DoActions(Phase.Input, scene);
+                // check if right
                 DoActions(Phase.Update, scene);
+                // display success or failure message? 
                 DoActions(Phase.Output, scene);
                 scene.ApplyChanges();
             }
