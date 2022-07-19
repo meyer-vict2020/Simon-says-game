@@ -24,6 +24,9 @@ namespace SimonSays
 
         private bool CheckEnoughClicks()
         {
+            if(player == null) {
+                return false;
+            }
             // put the amount of squares in the string here!! v
             numberOfSquares = 4;
             if (player.PlayerClicksCount() >= numberOfSquares)
