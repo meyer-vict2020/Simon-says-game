@@ -19,9 +19,15 @@ namespace SimonSays
         private bool win;
         // in theory here you would get the generated list
         List<int> generated = new List<int> { 1, 2, 3, 4 };
+        private IVideoService _videoService;
 
         //this method checks if the player has clicked the right amount of boxes to start a check
 
+
+        public CheckClicks(IServiceFactory serviceFactory)
+        {
+            _videoService = serviceFactory.GetVideoService();
+        }
         private bool CheckEnoughClicks()
         {
             if(player == null) {

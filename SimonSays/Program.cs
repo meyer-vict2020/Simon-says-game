@@ -53,24 +53,29 @@ namespace SimonSays
             square3.Tint(Color.Green());
 
             // Instantiate the actions that use the actors.
-            ScaleActorAction scaleActorAction = new ScaleActorAction(serviceFactory);
+            // ScaleActorAction scaleActorAction = new ScaleActorAction(serviceFactory);
             DrawActorAction drawActorAction = new DrawActorAction(serviceFactory);
-            GamePattern gamePattern = new GamePattern(serviceFactory);
-            CheckClicks checkClicks = new CheckClicks();
+            // GamePattern gamePattern = new GamePattern(serviceFactory);
+            // CheckClicks checkClicks = new CheckClicks(serviceFactory);
 
             // Instantiate a new scene, add the actors and actions.
             Scene scene = new Scene();            
-            scene.AddActor("actors", square0);
-            scene.AddActor("actors", square1);
-            scene.AddActor("actors", square2);
-            scene.AddActor("actors", square3);
+            // scene.AddActor("actors", square0);
+            // Console.WriteLine("Actor0 added");
+            // scene.AddActor("actors", square1);
+            // scene.AddActor("actors", square2);
+            // scene.AddActor("actors", square3);
 
             scene.AddActor("labels", label);
+            Console.WriteLine("Label 1 added");
             scene.AddActor("labels", instructions);
-            scene.AddAction(Phase.Input, scaleActorAction);
+            Console.WriteLine("Instructions added");
+            // scene.AddAction(Phase.Input, scaleActorAction);
+            Console.WriteLine("Scaling action added");
             scene.AddAction(Phase.Output, drawActorAction);
-            scene.AddAction(Phase.Update, gamePattern);
-            scene.AddAction(Phase.Update, checkClicks);
+
+            // scene.AddAction(Phase.Update, gamePattern);
+            // scene.AddAction(Phase.Update, checkClicks);
             // Start the game.
             Director director = new Director(serviceFactory);
             director.Direct(scene);
